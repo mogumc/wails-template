@@ -162,6 +162,10 @@ function openDir() {
       <el-button @click="openDir" type="primary" style="flex: 0 0 auto;">forEach</el-button>
     </div>
 
+    <!-- 时间 -->
+    <div class="welcome">
+      <p>当前时间：<span class="datetime">{{ data.systime }}</span></p>
+    </div>
     <!-- 表格 -->
     <div id="all">
       <div class="el-pagination is-background el-header">
