@@ -13,8 +13,8 @@ func greet(str string) string {
 ```
 在``service``目录下找到``router.go``文件，按照wails官方方式注册api  
 ```Go
-func (a *App) Greet(name string) string {
-	return greet(name)
+func (a *App) Greet(str string) string {
+	return greet(str)
 }
 ```
 在前端直接调用对应代码
