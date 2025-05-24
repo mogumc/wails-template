@@ -1,0 +1,2 @@
+# wails-template
+template
