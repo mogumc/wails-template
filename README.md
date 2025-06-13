@@ -5,7 +5,7 @@ wails2 + Vue3 + Element-Plus 通用模板
 若需要修改程序名,请注意检查所有文件的引用名均已修改  
 
 ## 使用方法
-在``service``目录下新建需要的go文件与函数文件  
+在``service``目录下新建需要的go文件并编写函数  
 ```Go
 func greet(str string) string {
 	return fmt.Sprintf("%s", str)
