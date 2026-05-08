@@ -2,6 +2,7 @@ package main
 
 import (
 	"embed"
+	"wails-temp/global"
 	"wails-temp/service"
 
 	"github.com/wailsapp/wails/v2"
@@ -12,12 +13,18 @@ import (
 //go:embed all:frontend/dist
 var assets embed.FS
 
+//go:embed Lang/*
+var langFS embed.FS
+
 func main() {
-	// Create an instance of the app structure
+	global.LangFS = langFS
+	global.Init()
+
+	appName := global.GetProcessName()
 	App := service.NewApp()
-	// Create application with options
+
 	err := wails.Run(&options.App{
-		Title:  "wails-temp",
+		Title:  appName,
 		Width:  1024,
 		Height: 768,
 		AssetServer: &assetserver.Options{
@@ -25,6 +32,7 @@ func main() {
 		},
 		BackgroundColour: &options.RGBA{R: 27, G: 38, B: 54, A: 1},
 		OnStartup:        App.Startup,
+		Frameless:        true,
 		Bind: []interface{}{
 			App,
 		},
