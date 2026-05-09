@@ -28,6 +28,7 @@ Wails v2 + Vue 3 + Element Plus 通用桌面应用开发模板
 │   └── wailsjs/                # Wails 自动生成的 JS 绑定
 ├── global/                     # 全局配置
 │   ├── init.go                 # 初始化入口
+│   ├── config.go               # 配置缓存
 │   ├── lang.go                 # 语言包加载
 │   └── logger.go               # 日志系统
 ├── Lang/                       # 语言包目录
