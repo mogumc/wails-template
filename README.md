@@ -14,38 +14,37 @@ Wails v2 + Vue 3 + Element Plus 通用桌面应用开发模板
 ## 项目结构
 
 ```
-├── api/                    # API 层（语言包相关）
-├── build/                  # 构建资源（图标等）
-├── frontend/               # Vue 3 前端
-│   ├── src/
-│   │   ├── components/     # Vue 组件
-│   │   │   ├── HeaderBar.vue    # 自定义标题栏（支持拖动）
-│   │   │   └── Test.vue         # 功能演示页面
-│   │   ├── composables/    # Vue 组合式函数
-│   │   │   └── useI18n.js       # 国际化 Hook
-│   │   ├── App.vue         # 根组件
-│   │   └── main.js         # 入口文件
-│   └── wailsjs/            # Wails 自动生成的 JS 绑定
-├── global/                 # 全局配置
-│   ├── config.go           # 全局配置（内存存储）
-│   ├── init.go             # 初始化入口
-│   ├── lang.go             # 语言包加载（文件系统 + 嵌入 FS）
-│   └── logger.go           # 日志系统
-├── Lang/                   # 语言包目录
-│   ├── default/            # 简体中文（默认）
-│   │   ├── info.json       # 语言元信息
-│   │   └── textmap.json    # 翻译文本
-│   └── en-US/              # English
+├── api/                        # API 层
+├── build/                      # 构建资源
+├── frontend/                   # Vue 3 前端
+│   ├── src/                    
+│   │   ├── components/         # Vue 组件
+│   │   │   ├── HeaderBar.vue   # 自定义标题栏
+│   │   │   └── Test.vue        # 功能演示页面
+│   │   ├── composables/        # Vue 组合式函数
+│   │   │   └── useI18n.js      # i18n
+│   │   ├── App.vue             # 根组件
+│   │   └── main.js             # 入口文件
+│   └── wailsjs/                # Wails 自动生成的 JS 绑定
+├── global/                     # 全局配置
+│   ├── init.go                 # 初始化入口
+│   ├── lang.go                 # 语言包加载
+│   └── logger.go               # 日志系统
+├── Lang/                       # 语言包目录
+│   ├── default/                # 简体中文（默认）
+│   │   ├── info.json           # 语言元信息
+│   │   └── textmap.json        # 翻译文本
+│   └── en-US/                  # English
 │       ├── info.json
 │       └── textmap.json
-├── logger/                 # 日志工具
-├── service/                # 业务逻辑层
-│   ├── router.go           # API 路由（Wails 绑定方法）
-│   └── temp.go             # 示例函数实现
-├── main.go                 # 程序入口
-├── go.mod
+├── logger/                     # 日志系统
+├── service/                    # 业务逻辑层
+│   ├── router.go               # Wails 绑定方法
+│   └── temp.go                 # 示例函数实现
+├── main.go                     # 程序入口
+├── go.mod                    
 ├── go.sum
-└── wails.json              # Wails 配置
+└── wails.json                  # Wails 配置
 ```
 
 ## 快速开始
@@ -68,7 +67,7 @@ go install github.com/wailsapp/wails/v2/cmd/wails@latest
 cd frontend && npm install && cd ..
 
 # 开发模式（热重载）
-wails dev
+wails dev -tags debug
 
 # 构建生产版本
 wails build
@@ -206,11 +205,11 @@ global.Log.Infof("用户 %s 登录", username)
 
 | 功能 | 说明 | 演示位置 |
 |------|------|----------|
-| 自定义标题栏 | 无边框窗口 + 拖动支持 | 顶部标题栏 |
+| 自定义标题栏 | 无边框窗口 | 顶部标题栏 |
 | 前后端数据交互 | Wails 绑定调用 Go 函数 | Greet 演示 |
 | 事件系统 | 后端实时推送数据到前端 | 实时时间显示 |
 | JSON 数据处理 | 后端生成 JSON，前端表格展示 | JSON 演示 |
-| 语言切换 | 运行时切换多语言，无需重载 | 语言切换面板 |
+| 语言切换 | 运行时切换多语言 | 语言切换面板 |
 | 日志等级设置 | 动态调整日志输出级别 | 日志等级面板 |
 | 日志文件查看 | 读取并展示日志文件内容 | 日志查看器 |
 | 系统信息 | 获取 OS、架构、CPU 等信息 | 系统信息面板 |
