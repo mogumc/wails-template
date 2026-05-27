@@ -1,4 +1,4 @@
-# wails-template
+lang# wails-template
 
 Wails v2 + Vue 3 + Element Plus 通用桌面应用开发模板
 
@@ -31,7 +31,7 @@ Wails v2 + Vue 3 + Element Plus 通用桌面应用开发模板
 │   ├── config.go               # 配置缓存
 │   ├── lang.go                 # 语言包加载
 │   └── logger.go               # 日志系统
-├── Lang/                       # 语言包目录
+├── lang/                       # 语言包目录
 │   ├── default/                # 简体中文（默认）
 │   │   ├── info.json           # 语言元信息
 │   │   └── textmap.json        # 翻译文本
@@ -84,7 +84,7 @@ wails build
 |------|--------|
 | `wails.json` | `name` 和 `outputfilename` |
 | `main.go` | `options.App.Title` |
-| `Lang/*/textmap.json` | `app_name` 的值 |
+| `lang/*/textmap.json` | `app_name` 的值 |
 
 ### 2. 添加后端功能
 
@@ -160,9 +160,9 @@ EventsOn('data-update', (data) => {
 
 ### 5. 添加新的语言
 
-在 `Lang/` 目录下创建新文件夹（如 `ja-JP`），包含两个文件：
+在 `lang/` 目录下创建新文件夹（如 `ja-JP`），包含两个文件：
 
-**`Lang/ja-JP/info.json`**：
+**`lang/ja-JP/info.json`**：
 ```json
 {
   "language_name": "日本語",
@@ -175,7 +175,7 @@ EventsOn('data-update', (data) => {
 }
 ```
 
-**`Lang/ja-JP/textmap.json`**：
+**`lang/ja-JP/textmap.json`**：
 ```json
 {
   "app_name": "アプリ名",
@@ -220,7 +220,7 @@ global.Log.Infof("用户 %s 登录", username)
 
 ## 兼容性信息
 
-- [Wails](https://github.com/wailsapp/wails) v2.10.1
+- [Wails](https://github.com/wailsapp/wails) v2.12.0
 - Go >= 1.21
 - Node.js >= 18
 

@@ -10,7 +10,7 @@ import (
 
 func Init() {
 	dirs := []string{
-		"Lang",
+		"lang",
 		GlobalConfig.LogDir,
 	}
 	for _, dir := range dirs {
@@ -49,7 +49,7 @@ func GetLangPack() (*LanguagePack, error) {
 		}
 		return pack, err
 	}
-	
+
 	embedPath := filepath.Join("Lang", useLangPath)
 	pack, err := tryLoadLangPackFromEmbed(embedPath)
 	if err == nil {

@@ -8,12 +8,12 @@ import (
 )
 
 var (
-	pathLang       = "Lang/"
-	useLangPath    = "default"
-	allLangInfo    = []LanguageInfo{}
-	LangFS         fs.FS
-	langPackCache  = map[string]*LanguagePack{}
-	langCodeToDir  = map[string]string{}
+	pathLang      = "lang/"
+	useLangPath   = "default"
+	allLangInfo   = []LanguageInfo{}
+	LangFS        fs.FS
+	langPackCache = map[string]*LanguagePack{}
+	langCodeToDir = map[string]string{}
 )
 
 type LanguageInfo struct {
