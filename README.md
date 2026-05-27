@@ -1,4 +1,4 @@
-lang# wails-template
+# wails-template
 
 Wails v2 + Vue 3 + Element Plus 通用桌面应用开发模板
 
@@ -226,4 +226,4 @@ global.Log.Infof("用户 %s 登录", username)
 
 ## License
 
-GPL-3.0 license
+MIT license
