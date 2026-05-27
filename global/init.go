@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"io/fs"
 	"os"
-	"path/filepath"
+	Pa "path"
 )
 
 func Init() {
@@ -36,7 +36,7 @@ func GetLangTextMap() map[string]string {
 }
 
 func GetLangPack() (*LanguagePack, error) {
-	langPath := filepath.Join(pathLang, useLangPath)
+	langPath := Pa.Join(pathLang, useLangPath)
 
 	if cached, ok := langPackCache[langPath]; ok {
 		return cached, nil
@@ -50,7 +50,7 @@ func GetLangPack() (*LanguagePack, error) {
 		return pack, err
 	}
 
-	embedPath := filepath.Join("Lang", useLangPath)
+	embedPath := Pa.Join("lang", useLangPath)
 	pack, err := tryLoadLangPackFromEmbed(embedPath)
 	if err == nil {
 		langPackCache[langPath] = pack
@@ -59,7 +59,7 @@ func GetLangPack() (*LanguagePack, error) {
 }
 
 func tryLoadLangPack(langPath string) (*LanguagePack, error) {
-	infoPath := filepath.Join(langPath, "info.json")
+	infoPath := Pa.Join(langPath, "info.json")
 	infoData, err := os.ReadFile(infoPath)
 	if err != nil {
 		return nil, err
@@ -70,7 +70,7 @@ func tryLoadLangPack(langPath string) (*LanguagePack, error) {
 		return nil, err
 	}
 
-	textmapPath := filepath.Join(langPath, "textmap.json")
+	textmapPath := Pa.Join(langPath, "textmap.json")
 	textmapData, err := os.ReadFile(textmapPath)
 	if err != nil {
 		return nil, fmt.Errorf("读取 textmap.json 失败: %v", err)
@@ -92,18 +92,20 @@ func tryLoadLangPackFromEmbed(langPath string) (*LanguagePack, error) {
 		return nil, fmt.Errorf("嵌入的文件系统未初始化")
 	}
 
-	infoPath := filepath.Join(langPath, "info.json")
+	infoPath := Pa.Join(langPath, "info.json")
 	infoData, err := fs.ReadFile(LangFS, infoPath)
 	if err != nil {
+		Log.Warnf("读取嵌入 info.json 失败: %v", err)
 		return nil, err
 	}
 
 	var langInfo LanguageInfo
 	if err := json.Unmarshal(infoData, &langInfo); err != nil {
+		Log.Warnf("解析嵌入 info.json 失败: %v", err)
 		return nil, err
 	}
 
-	textmapPath := filepath.Join(langPath, "textmap.json")
+	textmapPath := Pa.Join(langPath, "textmap.json")
 	textmapData, err := fs.ReadFile(LangFS, textmapPath)
 	if err != nil {
 		return nil, fmt.Errorf("读取嵌入 textmap.json 失败: %v", err)
